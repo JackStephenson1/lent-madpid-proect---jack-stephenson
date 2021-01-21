@@ -2,7 +2,9 @@
     "name": "Lent Madpid Proect - Jack Stephenson",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "corgio": "*",
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.10.0"
     },
     "files": [
         "main.blocks",
