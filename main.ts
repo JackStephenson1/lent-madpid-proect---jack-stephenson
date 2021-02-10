@@ -8,25 +8,26 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
 })
 info.onCountdownEnd(function () {
     projectile = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f f f f . . . . . . 
-        . . . . f f . . . . f f . . . . 
-        . . . . f . . f f f . f f . . . 
-        . . . . f . f . f f . . f . . . 
-        . . . . f f . f f f . . f . . . 
-        . . . . f f . f f f f f f . . . 
-        . . . . f f . f f f . f f . . . 
-        . . . . f f . . f f f . . . . . 
-        . . . . f f . . f f f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . e e . . . . . . . 
+        . . d . . . e d d e . . . . d . 
+        . d d f f . d d d d . . . d d d 
+        . . d . f f 1 d d 1 . f f f f . 
+        . . . . . f f 1 1 f f f . . . . 
+        . . . . . . f 1 1 f . . . . . . 
+        . . . . . . f 1 1 f . . . . . . 
+        . . . . . . f 1 1 f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . . . f . . f . . . . . . 
+        . . . . . . f . . f . . . . . . 
+        . . . . . f f . . f f . . . . . 
+        . . . f f f f . . f f f f . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Projectile)
     projectile.setPosition(76, 86)
     projectile.follow(mySprite)
+    projectile.setVelocity(Math.max(20, -20), Math.max(20, -20))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
@@ -65,3 +66,8 @@ mySprite.setPosition(4, 46)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 scene.cameraFollowSprite(mySprite)
 mySprite.ay = 450
+if (0 == 0) {
+	
+} else {
+	
+}
