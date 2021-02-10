@@ -6,6 +6,11 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     mySprite.x += 5
 })
+scene.onOverlapTile(SpriteKind.Player, tiles.util.door7, function (sprite, location) {
+    tiles.setTilemap(tilemap`level4`)
+    mySprite.setPosition(14, 11)
+    info.startCountdown(30)
+})
 info.onCountdownEnd(function () {
     projectile = sprites.create(img`
         . . . . . . . e e . . . . . . . 
@@ -29,14 +34,26 @@ info.onCountdownEnd(function () {
     projectile.follow(mySprite)
     projectile.setVelocity(Math.max(20, -20), Math.max(20, -20))
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    tiles.setTilemap(tilemap`level3`)
+    mySprite.say("You Got a runner but were later expelled for vandalism and defacing the school.", 5000)
+    pause(5000)
+    game.over(false)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, tiles.util.door5, function (sprite, location) {
+    tiles.setTilemap(tilemap`level4`)
+    mySprite.setPosition(14, 11)
+    info.startCountdown(30)
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     mySprite.x += -5
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
+tiles.setTilemap(tilemap`level3`)
 mySprite = sprites.create(img`
     . d . . . . . . . . . . . . d . 
     d d d . . . e e e e . . . d d d 
@@ -55,7 +72,6 @@ mySprite = sprites.create(img`
     . . . f f f f . . f f f f . . . 
     . . f f f f f . . f f f f f . . 
     `, SpriteKind.Player)
-tiles.setTilemap(tilemap`level3`)
 mySprite.say("You have escaped JWFS's Dull Computer Science lesson!", 5000)
 pause(5000)
 mySprite.say("Now climb the different Eton landmarks before he can catch you!", 5000)
@@ -66,8 +82,3 @@ mySprite.setPosition(4, 46)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
 scene.cameraFollowSprite(mySprite)
 mySprite.ay = 450
-if (0 == 0) {
-	
-} else {
-	
-}
