@@ -7,9 +7,9 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     mySprite.x += 5
 })
 scene.onOverlapTile(SpriteKind.Player, tiles.util.door7, function (sprite, location) {
-    tiles.setTilemap(tilemap`level4`)
     mySprite.setPosition(14, 11)
-    info.startCountdown(30)
+    tiles.setTilemap(tilemap`level8`)
+    info.startCountdown(20)
 })
 info.onCountdownEnd(function () {
     projectile = sprites.create(img`
@@ -35,18 +35,19 @@ info.onCountdownEnd(function () {
     projectile.setVelocity(Math.max(20, -20), Math.max(20, -20))
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
-    tiles.setTilemap(tilemap`level3`)
-    mySprite.say("You Got a runner but were later expelled for vandalism and defacing the school.", 5000)
+    mySprite.say("You Got a runner but were expelled for vandalism and defacement of the school.", 5000)
     pause(5000)
-    game.over(false)
+    game.over(false, effects.splatter)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    mySprite.say("You can never escape from me", 2000)
+    pause(2000)
     game.over(false)
 })
 scene.onOverlapTile(SpriteKind.Player, tiles.util.door5, function (sprite, location) {
     tiles.setTilemap(tilemap`level4`)
     mySprite.setPosition(14, 11)
-    info.startCountdown(30)
+    info.startCountdown(20)
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     mySprite.x += -5
@@ -72,7 +73,7 @@ mySprite = sprites.create(img`
     . . . f f f f . . f f f f . . . 
     . . f f f f f . . f f f f f . . 
     `, SpriteKind.Player)
-mySprite.say("You have escaped JWFS's Dull Computer Science lesson!", 5000)
+mySprite.say("You have escaped JWFS's boring Computer Science lesson!", 5000)
 pause(5000)
 mySprite.say("Now climb the different Eton landmarks before he can catch you!", 5000)
 pause(5000)
